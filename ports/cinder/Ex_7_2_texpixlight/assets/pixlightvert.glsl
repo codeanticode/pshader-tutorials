@@ -3,6 +3,7 @@
 uniform mat4 ciModelView;
 uniform mat4 ciModelViewProjection;
 uniform mat3 ciNormalMatrix;
+uniform mat4 textureMatrix;
 
 uniform vec4 lightPosition;
 
@@ -24,5 +25,5 @@ void main() {
   lightDir = normalize(lightPosition.xyz - ecVertex); 
   vertColor = ciColor;
 
-  vertTexCoord = vec4(ciTexCoord0.x, 1 - ciTexCoord0.y, 0, 1);
+  vertTexCoord = textureMatrix * vec4(ciTexCoord0, 0, 1);
 }

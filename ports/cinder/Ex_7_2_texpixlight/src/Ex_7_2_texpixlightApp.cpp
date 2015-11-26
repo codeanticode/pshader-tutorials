@@ -34,9 +34,7 @@ void Ex_7_2_texpixlightApp::setup() {
    	auto img = loadImage(loadAsset("lachoy.jpg"));
     label = gl::Texture2d::create(img);
     
-    pointLight[0] = 0;
-    pointLight[1] = -getWindowHeight();
-    pointLight[2] = 0;
+    pointLight[0] = 0; pointLight[1] = -getWindowHeight(); pointLight[2] = 0;
     
     shader = gl::GlslProg::create(loadAsset("pixlightvert.glsl"), loadAsset("pixlightfrag.glsl"));
     shader->uniform("texMap", 0);
@@ -59,6 +57,10 @@ void Ex_7_2_texpixlightApp::draw() {
     
     gl::setMatrices(cam);
     gl::ScopedModelMatrix modelScope;
+    
+    mat4 tm = mat4(1.0);
+    tm[1][1] = -1; tm[3][1] = 1;
+    shader->uniform("textureMatrix", tm);
     
     mat4 mv = gl::getModelMatrix();
     vec4 lightPos = mv * vec4(pointLight, 1.0f);
