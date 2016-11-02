@@ -28,7 +28,7 @@ void setup() {
 }
 
 void draw() {  
-  shader(pointShader, POINTS);
+  shader(pointShader);
   if (mousePressed) {   
     point(mouseX, mouseY);
   }  

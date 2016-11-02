@@ -14,7 +14,7 @@ void setup() {
 
 void draw() {
   if (mousePressed) {
-    shader(pointShader, POINTS);
+    shader(pointShader);
     
     float w = random(5, 50);
     pointShader.set("weight", w);
@@ -24,4 +24,3 @@ void draw() {
     point(mouseX, mouseY);
   }
 }
-

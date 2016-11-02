@@ -1,9 +1,7 @@
-#define PROCESSING_LINE_SHADER
-
 uniform mat4 transform;
 uniform vec4 viewport;
 
-attribute vec4 vertex;
+attribute vec4 position;
 attribute vec4 color;
 attribute vec4 direction;
 
@@ -18,7 +16,7 @@ vec3 clipToWindow(vec4 clip, vec4 viewport) {
 }
   
 void main() {
-  vec4 clip0 = transform * vertex;
+  vec4 clip0 = transform * position;
   vec4 clip1 = clip0 + transform * vec4(direction.xyz, 0);
   float thickness = direction.w;
   
